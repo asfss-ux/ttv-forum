@@ -4,7 +4,7 @@ import userRouter from './routes/user.routes.js';
 import authRouter from './routes/auth.routes.js';
 import threadRouter from './routes/thread.routes.js';
 import postRouter from './routes/post.routes.js';
-
+import connectDB from './database/mongodb.js';
 
 
 const app = express();
@@ -33,8 +33,9 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log('SERWER IS ON PORT ' + PORT)
+    await connectDB();
 })
 
 
