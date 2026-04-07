@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { register, login, logout, getMe } from '../controllers/auth.controllers.js';
+import passport from 'passport';
 const authRouter = Router();
 
-authRouter.post('/register', register);
-authRouter.post('/login', login);
-authRouter.post('/logout', logout);
-authRouter.get('/me', getMe);
+authRouter.get('/twitch', passport.authenticate('twitch'));
+authRouter.get('/twitch/callback', passport.authenticate('twitch', { failureRedirect: '/login-failed' }), (req, res) => {
+    res.redirect('/'); 
+});
 
 
 

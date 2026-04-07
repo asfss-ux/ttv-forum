@@ -4,7 +4,7 @@ const threadRouter = Router();
 
 
 
-
+ 
 threadRouter.get('/:id', getThreadById);
 threadRouter.get('/all', getAllThreads);
 threadRouter.delete('/:id', deleteThread);
